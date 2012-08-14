@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, ClientActivity!</string>
+    <string name="app_name">SupperParckVoiture</string>
+    <string name="activity_client_title">Fabriquer votre propre voiture</string>
+    <string name="activity_client_titre">Ma voiture</string>
+    <string name="activity_client_infos_client">Informations du client</string>
+    <string name="activity_client_infos_voiture">Informations sur la voiture</string>
+    <string name="activity_client_name">Nom</string>
+    <string name="activity_client_prenom">Prénom</string>
+    <string name="activity_client_description_voiture">Un peu de description sur la voiture</string>
+    <string name="activity_client_carrosserie_berline">Berlines</string>
+    <string name="activity_client_carrosserie">Choisissez la carrosserie</string>
+    <string name="activity_client_carrosserie_msg">Carrosserie</string>
+    <string name="activity_client_model_msg">Le model</string>
+    <string name="activity_client_button_continuer_msg">Continuer</string>
+    <string name="activity_fabrication_title">Choisissez une marque puis fabriquez</string>
+    <string name="activity_fabrication_button_fabriquer_msg">Fabriquer</string>
+    <string name="activity_parck_titlte">Bienvenue dans le parck des voitures fabriquées</string>
+    <string name="activity_fabrication_new_voiture_msg">Votre voiture fabriquée</string>
+    <string name="activity_parck_list_voiture_fabriquer">Liste des voitures fabriquées</string>
+    <string name="activity_parck_button_retour">Retour sur la page client</string>
+
+</resources>
