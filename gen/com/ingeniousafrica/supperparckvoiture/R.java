@@ -12,23 +12,36 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int image_voiture=0x7f020001;
     }
     public static final class id {
+        public static final int LinearLayout1=0x7f05001f;
         public static final int RelativeLayout1=0x7f050000;
         public static final int activity_client_button_continuer=0x7f050010;
         public static final int activity_client_carrosserie_spin=0x7f05000b;
         public static final int activity_client_description_voiture_edit=0x7f05000f;
-        public static final int activity_client_model_spin=0x7f05000d;
+        public static final int activity_client_model_edit=0x7f05000d;
         public static final int activity_client_name_edit=0x7f050005;
         public static final int activity_client_prenom_edit=0x7f050007;
-        public static final int activity_fabrication_button_fabriquer=0x7f050012;
+        public static final int activity_fabrication_button_fabriquer=0x7f050013;
         public static final int activity_fabrication_marque_spin=0x7f050011;
-        public static final int activity_parck_listview_listvoiture=0x7f050015;
-        public static final int activity_parck_listview_new_voiture=0x7f050013;
+        public static final int activity_fabrication_moteur_spin=0x7f050012;
+        public static final int activity_parck_listview_listvoiture=0x7f050017;
+        public static final int activity_parck_listview_new_voiture=0x7f050014;
         public static final int button1=0x7f050016;
+        public static final int item_nouveau_voiture_annee_text=0x7f05001d;
+        public static final int item_nouveau_voiture_carrosserie_text=0x7f05001b;
+        public static final int item_nouveau_voiture_description_text=0x7f05001e;
+        public static final int item_nouveau_voiture_image=0x7f050018;
+        public static final int item_nouveau_voiture_marque_text=0x7f050019;
+        public static final int item_nouveau_voiture_model_text=0x7f05001a;
+        public static final int item_nouveau_voiture_moteur_text=0x7f05001c;
+        public static final int item_voiture_image=0x7f050020;
+        public static final int item_voiture_marque_text=0x7f050021;
+        public static final int item_voiture_model=0x7f050022;
         public static final int linearLayout1=0x7f050003;
         public static final int linearLayout2=0x7f050009;
-        public static final int scrollView1=0x7f050014;
+        public static final int scrollView1=0x7f050015;
         public static final int textView1=0x7f050001;
         public static final int textView2=0x7f050002;
         public static final int textView3=0x7f050008;
@@ -42,7 +55,8 @@ public final class R {
         public static final int activity_client=0x7f030000;
         public static final int activity_fabrication=0x7f030001;
         public static final int activity_parck=0x7f030002;
-        public static final int item_voiture=0x7f030003;
+        public static final int item_nouveau_voiture=0x7f030003;
+        public static final int item_voiture=0x7f030004;
     }
     public static final class string {
         public static final int activity_client_button_continuer_msg=0x7f04000d;
@@ -58,6 +72,8 @@ public final class R {
         public static final int activity_client_title=0x7f040002;
         public static final int activity_client_titre=0x7f040003;
         public static final int activity_fabrication_button_fabriquer_msg=0x7f04000f;
+        public static final int activity_fabrication_marque_text=0x7f040014;
+        public static final int activity_fabrication_moteur_text=0x7f040015;
         public static final int activity_fabrication_new_voiture_msg=0x7f040011;
         public static final int activity_fabrication_title=0x7f04000e;
         public static final int activity_parck_button_retour=0x7f040013;

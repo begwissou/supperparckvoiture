@@ -3,7 +3,7 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
-
+
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -11,26 +11,27 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:orientation="vertical" >
-
+
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_parck_titlte"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/activity_fabrication_new_voiture_msg" />
-
+
         <ListView
             android:id="@+id/activity_parck_listview_new_voiture"
             android:layout_width="match_parent"
-            android:layout_height="80dp" >
-
+            android:layout_height="150dip"
+            android:layout_weight="431" >
         </ListView>
+
     </LinearLayout>
 
     <ScrollView
@@ -45,19 +46,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-		<TextView
-		    android:id="@+id/textView2"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="@string/activity_parck_list_voiture_fabriquer" />
-
-            <ListView
-                android:id="@+id/activity_parck_listview_listvoiture"
-                android:layout_width="match_parent"
-                android:layout_height="303dp" >
-
-            </ListView>
-
         </LinearLayout>
     </ScrollView>
 
@@ -68,5 +56,22 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/activity_parck_button_retour" />
+
+    <ListView
+        android:id="@+id/activity_parck_listview_listvoiture"
+        android:layout_width="match_parent"
+        android:layout_height="192dp"
+        android:layout_above="@+id/button1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="23dp" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/activity_parck_listview_listvoiture"
+        android:layout_alignParentLeft="true"
+        android:text="@string/activity_parck_list_voiture_fabriquer" />
 
 </RelativeLayout>

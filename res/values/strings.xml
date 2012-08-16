@@ -21,5 +21,7 @@
     <string name="activity_fabrication_new_voiture_msg">Votre voiture fabriquée</string>
     <string name="activity_parck_list_voiture_fabriquer">Liste des voitures fabriquées</string>
     <string name="activity_parck_button_retour">Retour sur la page client</string>
+    <string name="activity_fabrication_marque_text">La marque</string>
+    <string name="activity_fabrication_moteur_text">Le Type de moteur</string>
 
 </resources>

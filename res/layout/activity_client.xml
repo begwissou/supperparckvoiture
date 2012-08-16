@@ -106,11 +106,12 @@
             android:text="@string/activity_client_model_msg"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="12dip" />
-
-        <Spinner
-            android:id="@+id/activity_client_model_spin"
+
+        <EditText
+            android:id="@+id/activity_client_model_edit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="" />
 
         <TextView
             android:id="@+id/textView4"

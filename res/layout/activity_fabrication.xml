@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:text="@string/activity_fabrication_title"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
+
     <Spinner
         android:id="@+id/activity_fabrication_marque_spin"
         android:layout_width="200dip"
@@ -21,13 +21,38 @@
         android:layout_below="@+id/textView1"
         android:layout_marginTop="42dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="24dp"
+        android:text="@string/activity_fabrication_marque_text" />
+
+    <Spinner
+        android:id="@+id/activity_fabrication_moteur_spin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/activity_fabrication_marque_spin"
+        android:layout_marginTop="51dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/activity_fabrication_marque_spin"
+        android:layout_marginTop="36dp"
+        android:text="@string/activity_fabrication_moteur_text" />
+
     <Button
         android:id="@+id/activity_fabrication_button_fabriquer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/activity_fabrication_marque_spin"
-        android:layout_below="@+id/activity_fabrication_marque_spin"
-        android:layout_marginTop="56dp"
+        android:layout_below="@+id/activity_fabrication_moteur_spin"
         android:text="@string/activity_fabrication_button_fabriquer_msg" />
 
 </RelativeLayout>
