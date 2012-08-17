@@ -1,6 +1,12 @@
 package com.ingeniousafrica.supperparckvoiture.metier;
 
-public class ParckVehicule {
+import java.io.Serializable;
+
+public class ParckVehicule implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int img;
 	private String marque;
 	private String model;
