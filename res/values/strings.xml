@@ -24,5 +24,9 @@
     <string name="activity_fabrication_marque_text">La marque</string>
     <string name="activity_fabrication_moteur_text">Le Type de moteur</string>
     <string name="activity_fabrication_button_anuler_msg">Annuler</string>
+    <string name="titre_boite_dialogue">Suppression</string>
+    <string name="activity_client_button_list_voiture_msg">Afficher la liste des voitures</string>
+    <string name="list_voiture_msg">Liste des voitures déjà créees</string>
+    <string name="list_voiture_titre_boite_dialogue">Liste des voitures</string>
 
 </resources>

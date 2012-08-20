@@ -3,12 +3,18 @@ package com.ingeniousafrica.supperparckvoiture.activities;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 
 import com.ingeniousafrica.supperparckvoiture.R;
@@ -18,7 +24,7 @@ import com.ingeniousafrica.supperparckvoiture.metier.ParckVehicule;
 import com.ingeniousafrica.supperparckvoiture.metier.SerialisationClientVehicule;
 import com.ingeniousafrica.supperparckvoiture.metier.VehiculeAdapter;
 
-public class ParckVoiture extends Activity implements OnClickListener {
+public class ParckVoiture extends Activity implements OnClickListener, OnItemClickListener {
 	ListView listNewVehicule;
 	
 	ListView listVehicule;
@@ -29,7 +35,13 @@ public class ParckVoiture extends Activity implements OnClickListener {
 	
 	DataClientVehicule donnes;
 	
+	public static final int SUPPRIMER_VEHICULE = 1;
 	
+	ParckVehicule itemVehicule;
+	
+	VehiculeAdapter adapter;
+	
+	ArrayList<ParckVehicule> listObjVehicule;
 	
 	
 	 @Override
@@ -59,26 +71,33 @@ public class ParckVoiture extends Activity implements OnClickListener {
 	        
 	        listNewVehicule = (ListView)findViewById(R.id.activity_parck_listview_new_voiture);
 	        
+	       
+	        
 	        listNewVehicule.setAdapter(nAdapter);
 	        
 	        findViewById(R.id.activity_parck_button_retour_id).setOnClickListener(this);
 	        
+	        //je déserialise puis recupère les données sur le lient et les vehicules
 	        donnes = (DataClientVehicule) SerialisationClientVehicule.readData(this, "donnees");
 	        
 	        if(donnes != null){
+	        	//recupère la liste des vehicules de l'objet DataClientVehicule
+	        	listObjVehicule = donnes.getVehicule();
 	        	
-	        	VehiculeAdapter adapter = new VehiculeAdapter(this,R.layout.item_nouveau_voiture,donnes.getVehicule());
+	        	adapter = new VehiculeAdapter(this,R.layout.item_nouveau_voiture, listObjVehicule);
 	        	
 	        	listVehicule = (ListView)findViewById(R.id.activity_parck_listview_listvoiture);
 	        	
-	        	listVehicule.setAdapter(adapter);
-//	        	for(int i=0; donnes.getClients().l ){
-//	        		
-//	        	}
+	        	listVehicule.setOnItemClickListener(this);
 	        	
-	        	//donnes.getClients().add(client);
-		        donnes.getVehicule().add(vehicule);
+	        	listVehicule.setAdapter(adapter);
+	        	
+	        	//j'ajoute à liste de vehicule la voiture nouvellement créee
+	        	listObjVehicule.add(vehicule);
+	        	
+	        	donnes.setVehicule(listObjVehicule);
 		        
+	        	//je sauvegarde les donnés en les sérialisant
 		        SerialisationClientVehicule.saveData(this, "donnees", donnes, false);
 	        }else{
 	        	donnes = new DataClientVehicule();
@@ -87,28 +106,63 @@ public class ParckVoiture extends Activity implements OnClickListener {
 		        
 		        SerialisationClientVehicule.saveData(this, "donnees", donnes, false);
 	        }
-	        //DataClientVehicule donnes = new DataClientVehicule();
-	        
-	        
+	      
 	        
 	    }
-
-
-
-	
-
 
 	public void onClick(View v) {
 		switch(v.getId()){
 		case R.id.activity_parck_button_retour_id:
-			Intent intent = new Intent(this, ClientActivity.class );
-    		startActivity(intent);
+			/*Intent intent = new Intent(this, ClientActivity.class );
+    		startActivity(intent);*/
 			finish();
 			break;
 		}
 
-    	
 		
 	}
+
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		itemVehicule = (ParckVehicule) listVehicule.getItemAtPosition(arg2);
+		//j'affiche le dialogue avec son id en paramettre, puis la methode onCreateDialog() sera appeller
+		showDialog(SUPPRIMER_VEHICULE);
+		
+		
+	}
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle(R.string.titre_boite_dialogue);
+		builder.setMessage("Voulez-vous supprimer cette voiture? \n\n");
+		builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+			
+			public void onClick(DialogInterface arg0, int arg1) {
+				//je supprime l'objet vehicule clicqué
+				listObjVehicule.remove(itemVehicule);
+				
+				//je modifi la liste des voitures
+				donnes.setVehicule(listObjVehicule);
+				
+				//je sauvegarde les données
+				SerialisationClientVehicule.saveData(ParckVoiture.this, "donnees", donnes, false);
+				
+				//j'affiche un message pour rassurrer l'utilisateur
+				Toast.makeText(ParckVoiture.this,"La voiture "+itemVehicule.getMarque()+" "+itemVehicule.getModel()+" à été supprimée", 5000).show();
+				
+				//je reaffiche les infos dans la listview
+				listVehicule.setAdapter(adapter);
+				
+				
+			}
+		});
+		
+		builder.setNegativeButton("Non", null);
+		return builder.create();
+		
+	}
+	
+	
 
 }

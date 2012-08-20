@@ -141,5 +141,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="@string/activity_client_button_continuer_msg" />
+
+    <Button
+        android:id="@+id/activity_client_button_list_voiture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/activity_client_button_list_voiture_msg" />
 
 </RelativeLayout>

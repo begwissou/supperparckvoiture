@@ -2,19 +2,25 @@ package com.ingeniousafrica.supperparckvoiture.activities;
 
 import com.ingeniousafrica.supperparckvoiture.R;
 import com.ingeniousafrica.supperparckvoiture.metier.Client;
+import com.ingeniousafrica.supperparckvoiture.metier.DataClientVehicule;
 import com.ingeniousafrica.supperparckvoiture.metier.ParckVehicule;
+import com.ingeniousafrica.supperparckvoiture.metier.SerialisationClientVehicule;
+import com.ingeniousafrica.supperparckvoiture.metier.VehiculeAdapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class ClientActivity extends Activity implements OnClickListener, OnItemSelectedListener {
     /** Called when the activity is first created. */
@@ -37,18 +43,27 @@ public class ClientActivity extends Activity implements OnClickListener, OnItemS
     		   "Autobus",
     		   "Camions",
     		   "Machines et tracteurs"
-       };;
+       };
+	
+	Bundle objetbunble = new Bundle();
+	
+	LayoutInflater inflateur;
+	
+	public static final int AFFICHER_LIST_VOITURE = 1;
+	
+	ListView listV;
 	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
-        
+        inflateur = LayoutInflater.from(this);
        findViewById(R.id.activity_client_button_continuer).setOnClickListener(this);
+       findViewById(R.id.activity_client_button_list_voiture).setOnClickListener(this);
        
        
-       
+       //je cée l'adapteur pour l'attribuer à mon spinner après.
        ArrayAdapter<String> adapterCarro = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, carrosseries);
        
        spCarro = (Spinner)findViewById(R.id.activity_client_carrosserie_spin);
@@ -76,10 +91,8 @@ public class ClientActivity extends Activity implements OnClickListener, OnItemS
     	switch(v.getId()){
 
     	case R.id.activity_client_button_continuer:
-    		//Toast.makeText(this, carrosserie, 3000).show();
-    		//je crée un objet Bundle pour y stocker les infos vers l'autre activité
-    		Bundle objetbunble = new Bundle();
     		
+    		    		
     		//un objet vehicule pour les infos de la nouvelle voiture
     		ParckVehicule vehicule = new ParckVehicule();
     		
@@ -108,7 +121,12 @@ public class ClientActivity extends Activity implements OnClickListener, OnItemS
     		
     		break;
 
+    	case R.id.activity_client_button_list_voiture:
     	
+    		
+    		showDialog(AFFICHER_LIST_VOITURE);
+    		
+    		break;
 
     	}
 
@@ -124,7 +142,39 @@ public class ClientActivity extends Activity implements OnClickListener, OnItemS
 
 
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	protected Dialog onCreateDialog(int id) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		View view = inflateur.inflate(R.layout.list_voiture, null);
+		
+		 //je déserialise puis recupère les données sur le lient et les vehicules
+		DataClientVehicule donnes = (DataClientVehicule) SerialisationClientVehicule.readData(this, "donnees");
+        
+        if(donnes != null){
+        	
+        	VehiculeAdapter adapter = new VehiculeAdapter(this,R.layout.item_nouveau_voiture,  donnes.getVehicule());
+        	
+        	listV = (ListView)view.findViewById(R.id.list_voiture_id);
+        	
+        	//listVehicule.setOnItemClickListener(this);
+        	
+        	listV.setAdapter(adapter);
+        	
+        	
+        }
+        
+        builder.setView(view);
+        
+		builder.setTitle(R.string.list_voiture_titre_boite_dialogue);
+		
+		builder.setNegativeButton(android.R.string.cancel, null);
+		return builder.create();
+	}
+	
+	
 }

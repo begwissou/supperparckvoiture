@@ -10,10 +10,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.ingeniousafrica.supperparckvoiture.R;
-import com.ingeniousafrica.supperparckvoiture.metier.Client;
 import com.ingeniousafrica.supperparckvoiture.metier.ParckVehicule;
 
 
@@ -87,8 +85,6 @@ public class Fabrication extends Activity implements OnClickListener, OnItemSele
     		vehicule.setAnnee(new Date().toString());
     		
     		objetbunble.putSerializable("vehicule", vehicule);
-    		//objetbunble.putSerializable("client", client);
-    		//Toast.makeText(this, moteur, 4000).show();
     		
     		Intent intent = new Intent(this, ParckVoiture.class );
     		intent.putExtras(objetbunble);

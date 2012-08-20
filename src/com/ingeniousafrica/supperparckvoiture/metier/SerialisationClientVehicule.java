@@ -15,7 +15,6 @@ public final class SerialisationClientVehicule {
 	
 	public static void saveData(Context context, String key, final Object data, boolean temp){
 		synchronized (data) {
-			//Log.i("Serialization","Enregistre l'objet dans le cache");
 			if(data==null)return;
 			final File file;
 			if(temp){
@@ -31,8 +30,6 @@ public final class SerialisationClientVehicule {
 		try {
 			return new File(context.getCacheDir().getAbsolutePath()+"/"+key);
 		} catch (Exception e) {
-			//Log.e("Serialization","ERREUR (getCacheFile) lors de l'ouverture du fichier pour la clé : " + key);
-			//Log.e("Serialization",e.getMessage());
 			e.printStackTrace();
 			return null;
 		}
@@ -42,8 +39,6 @@ public final class SerialisationClientVehicule {
 		try {
 			return new File(context.getFilesDir().getAbsolutePath()+"/"+key);
 		} catch (Exception e) {
-			//Log.e("Serialization","ERREUR (getDataFile) lors de l'ouverture du fichier pour la clé : " + key);
-			//Log.e("Serialization",e.getMessage());
 			e.printStackTrace();
 			return null;
 		}
@@ -57,16 +52,13 @@ public final class SerialisationClientVehicule {
 			oos.writeObject(data);			
 			oos.close();
 			fos.close();
-			//Log.i("Serialization","Cache enregistré : " + file.getAbsolutePath());
 
 		} catch (Exception e) {
-			//Log.e("Serialization","ERREUR, Cache NON ENREGISTRE : " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
 	
 	public static Object readData(Context context, String key){
-		//Log.i("Serialization","Chargement du cache de la clé : "+key);
 		File file = getCacheFile(context,key);
 		// Si le fichier n'éxiste pas dans le dossier du cache
 		// On regarde s'il existe dans le dossier data
@@ -81,11 +73,9 @@ public final class SerialisationClientVehicule {
 			Object o = ois.readObject();		
 			ois.close();
 			fis.close();
-			//Log.i("Serialization","Fichier cache chargé");
 			return o;
 
 		} catch (Exception e) {
-			//Log.e("Serialization","ERREUR lors du chargement du cache : " + e.getMessage());
 			e.printStackTrace();
 			return null;
 		}
